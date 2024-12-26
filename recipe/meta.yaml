@@ -14,15 +14,15 @@ build:
     - confusable_homoglyphs=confusable_homoglyphs.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - click
 
 test:
@@ -33,6 +33,7 @@ test:
     - confusable_homoglyphs --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/vhf/confusable_homoglyphs
